@@ -1,6 +1,7 @@
 import lal
 import numpy as np
 import pycbc.waveform
+import pycbc.pnutils
 
 def gen_imrphenomtphmj(**par):
     if "approximant" in par:
@@ -16,3 +17,12 @@ def gen_imrphenomtphmj(**par):
         else:
             out += hlm * ylm
     return out.real(), -out.imag()
+
+def get_imrphenomtphmj_length(**kwargs):
+    kwargs['f_lower'] = kwargs['f_lower'] / 5 * 2
+    return pycbc.pnutils.get_imr_duration(kwargs['mass1'],
+                                          kwargs['mass2'],
+                                          kwargs['spin1z'],
+                                          kwargs['spin2z'],
+                                          kwargs['f_lower'],
+                                          approximant='IMRPhenomXAS')

@@ -14,6 +14,8 @@ setup (
     entry_points = {"pycbc.waveform.td":[
                         "IMRPhenomTPHM_J = boxing.genwave:gen_imrphenomtphmj",
                        ],
+                    "pycbc.waveform.length":[
+                        "IMRPhenomTPHM_J = boxing.genwave:get_imrphenomtphmj_length",]
                     },
     python_requires='>=3.8',
     install_requires=[
